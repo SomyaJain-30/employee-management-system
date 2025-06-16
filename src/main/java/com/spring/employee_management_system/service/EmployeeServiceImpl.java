@@ -29,8 +29,23 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public boolean checkIfEmailExists(String email) {
-        return employeeRepository.existsByEmail(email);
+    public boolean checkIfEmailExists(String email, Integer id) {
+        return employeeRepository.existsByEmailAndIdNot(email, id);
+    }
+
+    @Override
+    public List<Employee> getAllEmployeesSortedByName() {
+        return employeeRepository.findAllEmployeesSortedByName();
+    }
+
+    @Override
+    public Employee findEmployeeById(int id) {
+        return employeeRepository.findById(id).orElse(new Employee());
+    }
+
+    @Override
+    public void deleteEmployeeById(int id) {
+        employeeRepository.deleteById(id);
     }
 
 }

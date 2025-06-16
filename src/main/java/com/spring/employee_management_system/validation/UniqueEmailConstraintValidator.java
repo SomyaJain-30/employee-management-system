@@ -11,11 +11,11 @@ import jakarta.validation.ConstraintValidatorContext;
 @Component
 public class UniqueEmailConstraintValidator implements ConstraintValidator<UniqueEmail, String>{
 
-    private final EmployeeService employeeService;
+    // private final EmployeeService employeeService;
 
     @Autowired
     public UniqueEmailConstraintValidator(EmployeeService employeeService){
-        this.employeeService = employeeService;
+        // this.employeeService = employeeService;
     }
 
     @Override
@@ -26,8 +26,9 @@ public class UniqueEmailConstraintValidator implements ConstraintValidator<Uniqu
     @Override
     public boolean isValid(String userEmail, ConstraintValidatorContext constraintValidatorContext) {
         
-        if(userEmail == null) return true;
-        return !employeeService.checkIfEmailExists(userEmail);
+        // if(userEmail == null) return true;
+        // return !employeeService.checkIfEmailExists(userEmail);
+        return false;
     }
 
 }

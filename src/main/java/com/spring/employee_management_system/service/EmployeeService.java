@@ -10,6 +10,11 @@ public interface EmployeeService {
 
     public void addEmployee(Employee newEmployee);
 
-    public boolean checkIfEmailExists(String email);
+    public boolean checkIfEmailExists(String email, Integer id);
 
+    public List<Employee> getAllEmployeesSortedByName();
+
+    public Employee findEmployeeById(int id);
+
+    public void deleteEmployeeById(int id);
 }

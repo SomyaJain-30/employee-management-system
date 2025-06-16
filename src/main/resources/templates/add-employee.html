@@ -15,6 +15,7 @@
         <h3 class="mb-4">Add Employee</h3>
 
         <form th:action="@{/employees/save}" method="post" th:object="${employee}">
+            <input type="text" th:field="*{id}" class="invisible">
             <input type="text" th:field="*{firstName}" placeholder="Enter First Name" class="form-control w-25" th:classappend="${#fields.hasErrors('firstName')} ? 'is-invalid' : ''"/>
             <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="invalid-feedback"></span>
             <input type="text" th:field="*{lastName}" placeholder="Enter Last Name" class="form-control w-25 mt-4" th:classappend="${#fields.hasErrors('lastName')} ? 'is-invalid' : ''"/>
@@ -22,8 +23,12 @@
             <input type="email" th:field="*{email}" placeholder="Enter Email" class="form-control w-25 mt-4" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"/>
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback"></span>
         
-            <button class="btn btn-primary col-2 mt-4" type="submit">Save</button>
+            <button class="btn btn-info col-2 mt-4" type="submit">Save</button>
         </form>
+
+        <hr/>
+
+        <a th:href="@{/employees/list}">Back to Employees List</a>
 
     </div>
     
