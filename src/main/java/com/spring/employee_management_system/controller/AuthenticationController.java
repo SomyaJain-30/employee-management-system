@@ -11,4 +11,14 @@ public class AuthenticationController {
     public String showLogin(Model model){
         return "login";
     }
+
+    @GetMapping("/userInfo")
+    public String showUserInfo(Model model){
+        return "user-info";
+    }
+
+    @GetMapping("/access-denied")
+    public String showAccessDenied(Model model){
+        return "access-denied";
+    }
 }

@@ -11,11 +11,15 @@
     <div class="container">
         <h2>Employee Directory</h2>
         <hr/>
-
-        <form th:action="@{/employees/add}">
-            <button class="btn btn-primary" type="submit">Add new Employee</button>
-        </form>
-
+        <div class="d-flex justify-content-between mb-3">
+            <form th:action="@{/employees/add}">
+                <button class="btn btn-primary" type="submit">Add new Employee</button>
+            </form>
+            <form th:action="@{/userInfo}">
+                <button class="btn btn-info" type="submit">My Info</button>
+            </form>
+        </div>
+        
         <table class="table table-bordered table-striped table-hover mt-3">
             <thead class="table-dark ">
                 <tr>
@@ -34,7 +38,10 @@
                 </tr>
             </tbody>
         </table>
-
+        <hr class="mt-5"/>
+        <form th:action="@{/logout}" method="post">
+            <button class="btn btn-info" type="submit">Logout</button>
+        </form>
     </div>
 </body>
 </html>

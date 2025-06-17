@@ -27,13 +27,19 @@
         <h1>Login</h1>
 
         <div class="form-control mt-4">
-            <form th:action="@{/authenticateUser}"  type="post">
-                <div class="form-floating mt-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
+            <form action="#" th:action="@{/authenticateTheUser}"  method="post">
+                <div th:if="${param.error}" class="alert alert-danger mt-3" role="alert">
+                    You entered invalid username/password.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-info mt-3" role="alert">
+                    You have been logged out.
                 </div>
                 <div class="form-floating mt-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                     <label for="floatingPassword">Password</label>
                 </div>
 

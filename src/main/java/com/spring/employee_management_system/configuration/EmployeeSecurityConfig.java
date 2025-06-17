@@ -33,12 +33,21 @@ public class EmployeeSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer->
-            configurer.anyRequest().authenticated()
+            configurer
+            .requestMatchers("/").hasRole("EMPLOYEE")
+            .requestMatchers("/users/**").hasRole("MANAGER")
+            .anyRequest().authenticated()
         )
         .formLogin(form -> 
             form.loginPage("/login")
-                .loginProcessingUrl("/authenticateUser")
+                .loginProcessingUrl("/authenticateTheUser")
                 .permitAll()
+        )
+        .logout(logout->
+            logout.permitAll()
+        )
+        .exceptionHandling(configurer->
+            configurer.accessDeniedPage("/access-denied")
         );
         return http.build();
     }
