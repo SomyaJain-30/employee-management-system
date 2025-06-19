@@ -22,7 +22,7 @@ import jakarta.validation.Valid;
 public class AuthenticationController {
 
     private UserService userService;
-
+   
     @Autowired
     public AuthenticationController(UserService userService){
         this.userService = userService;
@@ -67,7 +67,6 @@ public class AuthenticationController {
             bindingResult.rejectValue("email", "duplicate.email", "Email already exists");
             return "signup";
         }
-
         userService.saveUser(user);
         return "login";
     }
